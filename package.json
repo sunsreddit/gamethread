@@ -1,0 +1,42 @@
+{
+  "name": "gamethread",
+  "version": "0.0.1",
+  "description": "The automation behind the Phoenix Suns subreddit game threads.",
+  "main": "bin/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest --coverage",
+    "start": "npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redditsuns/gamethread.git"
+  },
+  "keywords": [
+    "suns"
+  ],
+  "author": "bruxc <bruxc@sunsreddit.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/redditsuns/gamethread/issues"
+  },
+  "homepage": "https://github.com/redditsuns/gamethread#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.7",
+    "snoowrap": "^1.23.0"
+  },
+  "devDependencies": {
+    "dotenv": "^16.0.3",
+    "@babel/core": "^7.20.2",
+    "@babel/plugin-syntax-import-assertions": "^7.20.0",
+    "@babel/preset-env": "^7.20.2",
+    "@types/jest": "^29.2.3",
+    "babel-jest": "^29.3.1",
+    "dotenv": "^16.0.3",
+    "eslint": "^8.28.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.3.1",
+    "jsdoc": "^4.0.0"
+  }
+}
