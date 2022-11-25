@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "test": "jest --coverage",
-    "start": "npm run test"
+    "dry:start": "npm test",
+    "start": "node ./bin/index.js"
   },
   "repository": {
     "type": "git",

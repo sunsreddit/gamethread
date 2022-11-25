@@ -89,7 +89,13 @@ Distributed under the MIT License. See [LICENSE][license-url] for more informati
 
 <!-- CONTACT -->
 ## Contact
-u/bruxc - [@bruxc](https://reddit.com/u/bruxc) - mods@subreddit.net
+<html>
+  <body>
+    <p><img src="./docs/reddit.svg" style="width:3%; filter: invert(32%) sepia(91%) saturate(2585%) hue-rotate(0deg) brightness(100%) contrast(110%);"> 
+    <a href="https://reddit.com/u/bruxc/">u/bruxc</a>
+    </p>
+  </body>
+</html>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,3 +110,5 @@ u/bruxc - [@bruxc](https://reddit.com/u/bruxc) - mods@subreddit.net
   
   <!-- License -->
   [license-url]: LICENSE
+
+  [reddit-shield]: ./docs/reddit.svg

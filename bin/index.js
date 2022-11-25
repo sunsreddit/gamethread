@@ -1,4 +1,6 @@
+import { game } from "../src/nba/game.js"
 import { title } from "../src/reddit/title.js"
+import { body } from "../src/reddit/body.js"
 import { post } from "../src/reddit/post.js"
 import dotenv from 'dotenv'
 import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
@@ -7,6 +9,7 @@ import { default as parameters } from "../meta/parameters.json" assert { type: "
     dotenv.config()
     const { subreddit, team } = parameters
     try {
+        const gd = await game(team)
         const time = gd.stt
         const away = {
             name: gd.v.tn,
@@ -24,10 +27,9 @@ import { default as parameters } from "../meta/parameters.json" assert { type: "
         const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`
         const Sub = subreddit
         const Title = title(matchup, time)
-        const Body = "await body(home, away)"
+        const Body = await body(home, away)
         await post(Sub, Title, Body)
     } catch (err) {
-        console.err(err.message)
-        exit(1)
+        console.error(err.message)
     }
 })()

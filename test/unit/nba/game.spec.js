@@ -5,7 +5,7 @@ describe("game.js", () => {
     test("Returns a provided team's game data object.", async () => {
         const team = "PHX"
         const result = await game(team)
-        expect(result).toEqual(undefined)
+        expect(result).toBeUndefined || expect(result).toMatchObject
     })
     test("Returns a parameter error.", async () => {
         // const ids = []
