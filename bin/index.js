@@ -7,7 +7,7 @@ import { default as parameters } from "../meta/parameters.json" assert { type: "
 
 (async () => {
     dotenv.config()
-    const { subreddit, team } = parameters
+    const { subreddit, team, flair } = parameters
     try {
         const gd = await game(team)
         const time = gd.stt
