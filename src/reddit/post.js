@@ -15,4 +15,5 @@ export async function post(sub, title, text, flairId) {
         })
         .sticky()
         .distinguish()
+        .setSuggestedSort('new')
 }
