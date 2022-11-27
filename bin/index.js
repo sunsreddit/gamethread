@@ -1,4 +1,5 @@
 import { game } from "../src/nba/game.js"
+import { media } from "../src/nba/media.js"
 import { title } from "../src/reddit/title.js"
 import { body } from "../src/reddit/body.js"
 import { post } from "../src/reddit/post.js"
@@ -11,11 +12,13 @@ import { default as parameters } from "../meta/parameters.json" assert { type: "
     const { subreddit, team, flairId } = parameters
     try {
         const gd = await game(team)
+        const md = await media(gd.bd)
         const time = gd.stt
         const away = {
             name: gd.v.tn,
             record: gd.v.re,
-            city: gd.v.tc
+            city: gd.v.tc,
+            media: md.away
         }
         const home = {
             name: gd.h.tn,
@@ -23,7 +26,8 @@ import { default as parameters } from "../meta/parameters.json" assert { type: "
             city: gd.h.tc,
             arena_name: gd.ac,
             arena_city: gd.an,
-            arena_state: gd.as
+            arena_state: gd.as,
+            media: md.home
         }
         const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`
         const Sub = subreddit

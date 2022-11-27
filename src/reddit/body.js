@@ -17,7 +17,7 @@ const aScore = {
     }
 }
 
-const _boxScore = (home,away)  => {
+const _boxScore = (home, away) => {
     return `
 |            |1st         |2nd         |3rd         |4th         |Final            |
 |:--         |:--         |:--         |:--         |:--         |:--              |
@@ -26,30 +26,24 @@ const _boxScore = (home,away)  => {
 `
 }
 
-const _stadiumInfo = `
-|                |                             |
-|:--             |:--                          |
-|**Arena**       |Footpoot Center Phoenix,AZ   |
-|**TV (Home)**   |[TNT][url-1]                 |
-|**TV (Away)**   |[SN][url-2]                  |
-|**Radio (Home)**|[KMVP 98.7 / S: KSUN][url-3] |
-|**Radio (Away)**|[ESPN LA 710/KWKW (S)][url-4]| 
+function _arena(arena_city, arena_name) {
+    return `|**Arena**|${arena_city} ${arena_name}|`
+}
 
-[url-1]: https://www.tntdrama.com/nba-on-tnt
-[url-2]: https://www.nba.com/watch/nba-tv
-[url-3]: https://www.google.com/search?q=KMVP+98.7+%2F+S%3A+KSUN
-[url-4]: https://www.google.com/search?q=ESPN+LA+710%2FKWKW+%28S%29
-`
+function _media(home, away) {
+    return `|**TV (Home)**|[${home.tv.name}](${home.tv.url})|
+|**TV (Away)**|[${away.tv.name}](${away.tv.url})|
+|**Radio (Home)**|[${home.radio.name}](${home.radio.url})|
+|**Radio (Away)**|[${away.radio.name}](${away.radio.url})|
+|**Radio (Pirate)**|[Yarrr](https://gprivate.com/620jy)|`
+}
 
-
-export async function body(home,away) {
-    const _score = await _boxScore(home,away)
-
-    return `
----
-${_stadiumInfo}
----
-${_score}
----
-`
+export function body(home, away) {
+    // const _score = _boxScore(home, away)
+    const ad = _arena(home.arena_city, home.arena_name)
+    const md = _media(home.media, away.media)
+    return `|   |   |
+|:--|:--|
+${ad}
+${md}`
 }
