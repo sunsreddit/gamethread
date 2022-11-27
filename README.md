@@ -78,10 +78,10 @@ Don't forget to give the project a star! Thanks again!
 <!-- ROADMAP -->
 ## Roadmap
 
-| TO DO          | Description                                                     | OpenProject ID         | Status    |
-| -------------- | --------------------------------------------------------------- | -----------------      | --------- |
-| Unit Tests     | Jest Unit Testing for all modules in the directory: `./src/`    | [TBD]                  | 📑 Open   |
-| Automation     | A Docker service that automates the projects actions            | [TBD]                  | 📑 Open   |
+| TO DO      | Description                                                  | OpenProject ID           | Status        |
+| --         | --                                                           | --                       | --            |
+| Unit Tests | Jest Unit Testing for all modules in the directory: `./src/` | [TBD]                    | 📑 Open       | 
+| Automation | A Docker service that automates the projects actions         | [GAMETHREAD-112][rm-112] | ✏️ In Progress |
 
 <!-- LICENSE -->
 ## License
@@ -107,8 +107,9 @@ Distributed under the MIT License. See [LICENSE][license-url] for more informati
   [linux-url]:     https://docs.ubuntu.com/
   [node-shield]:   https://img.shields.io/badge/Node.js-%5E19.1.0-green?style=appveyor&logo=nodedotjs
   [node-url]:      https://nodejs.org/en/docs/
-  
+  [reddit-shield]: ./docs/reddit.svg
+  [rm-112]:        https://agile.sunsreddit.net/projects/suns-gamethread-project/work_packages/details/112/
+
   <!-- License -->
   [license-url]: LICENSE
 
-  [reddit-shield]: ./docs/reddit.svg
