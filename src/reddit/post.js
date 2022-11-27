@@ -1,6 +1,6 @@
 import snoowrap from "snoowrap"
 
-export async function post(sub, title, text, flair) {
+export async function post(sub, title, text, flairId) {
     return new snoowrap({
         userAgent: process.env.USER_AGENT,
         clientId: process.env.CLIENT_ID,

@@ -1,7 +1,7 @@
 // Info here: https://github.com/mtthai/nba-api-client/blob/master/data/endpoints.json
 
 export async function game(team) {
-    if (typeof team !== "string" || team.length !== 3) throw new Error("Parameter must be a string with 3 characters signifying a team's city (e.g. 'PHX'")
+    if (typeof team !== "string" || team.length !== 3) throw new Error("Parameter must be a string with 3 characters signifying a team's city (e.g. 'PHX')")
     // nba api data
     const full_schedule = "https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2022/league/00_full_schedule_week.json"
     const response = (await fetch(full_schedule)).json()
@@ -20,6 +20,6 @@ export async function game(team) {
     const games = ((game_data.lscd.filter((m) => m.mscd.mon === month))[0]).mscd.g
 
     // team game
-    const _game = games.filter(code => code.gcode.includes(today_date) && code.gcode.includes(team))
-    return _game[0]
+    const game = (games.filter(code => code.gcode.includes(today_date) && code.gcode.includes(team)))[0]
+    return game
 }
