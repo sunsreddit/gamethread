@@ -1,6 +1,6 @@
 {
   "name": "gamethread",
-  "version": "0.0.1",
+  "version": "0.1.0-beta",
   "description": "The automation behind the Phoenix Suns subreddit game threads.",
   "main": "bin/index.js",
   "type": "module",
