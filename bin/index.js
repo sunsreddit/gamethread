@@ -3,7 +3,7 @@ import { media } from "../src/nba/media.js"
 import { title } from "../src/reddit/title.js"
 import { body } from "../src/reddit/body.js"
 import { post } from "../src/reddit/post.js"
-import { convertETtoMT } from "../src/helpers/convertETtoMT.cjs"
+import { convertETtoMT } from "../src/helpers/convertETtoMT.js"
 import dotenv from 'dotenv'
 import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
 

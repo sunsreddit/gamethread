@@ -1,4 +1,4 @@
-function _isDST(date){
+function _isDST(date) {
     const year = date.getFullYear();
     const dst_start = new Date(year, 2, 14);
     const dst_end = new Date(year, 10, 7);
@@ -6,7 +6,7 @@ function _isDST(date){
     dst_end.setDate(7 - dst_end.getDay()); // adjust date to the 1st Sunday
     return (date >= dst_start && date < dst_end);
 }
-module.exports.convertETtoMT = (time) => {
+export async function convertETtoMT(time) {
     const isDst = _isDST(new Date())
     let hour = ((time.split(" "))[0].split(":"))[0]
     let mins = ((time.split(" "))[0].split(":"))[1]
@@ -36,7 +36,7 @@ module.exports.convertETtoMT = (time) => {
             break
     }
     switch (mins) {
-        case undefined: 
+        case undefined:
         default:
             mins = '00'
             break
