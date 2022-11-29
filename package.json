@@ -24,11 +24,11 @@
   },
   "homepage": "https://github.com/redditsuns/gamethread#readme",
   "dependencies": {
+    "cron": "^2.1.0",
     "node-fetch": "^2.6.7",
     "snoowrap": "^1.23.0"
   },
   "devDependencies": {
-    "dotenv": "^16.0.3",
     "@babel/core": "^7.20.2",
     "@babel/plugin-syntax-import-assertions": "^7.20.0",
     "@babel/preset-env": "^7.20.2",

@@ -6,8 +6,10 @@ import { post } from "../src/reddit/post.js"
 import { convertETtoMT } from "../src/helpers/convertETtoMT.js"
 import dotenv from 'dotenv'
 import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
+import { CronJob } from "cron";
 import { isPostTime } from "../src/helpers/isPostTime.js"
 
+// new CronJob("* 0 * * * *", () => {}, null, true, 'America/New_York')
 (async () => {
     dotenv.config()
     const { subreddit, team, flairId } = parameters
