@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "jest --coverage",
+    "test:isPostTime": "node ./src/helpers/isPostTime.js",
     "dry:start": "npm test",
     "start": "node ./bin/index.js"
   },

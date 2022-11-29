@@ -6,6 +6,7 @@ import { post } from "../src/reddit/post.js"
 import { convertETtoMT } from "../src/helpers/convertETtoMT.js"
 import dotenv from 'dotenv'
 import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
+import { isPostTime } from "../src/helpers/isPostTime.js"
 
 (async () => {
     dotenv.config()
@@ -13,7 +14,8 @@ import { default as parameters } from "../meta/parameters.json" assert { type: "
     try {
         const gd = await game(team)
         const md = await media(gd.bd)
-        const time = gd.stt
+        const gameTime = await convertETtoMT(gd.stt)
+        const isTimeToPost = await isPostTime(gameTime, process.env.TZ)
         const away = {
             name: gd.v.tn,
             record: gd.v.re,
@@ -32,8 +34,7 @@ import { default as parameters } from "../meta/parameters.json" assert { type: "
         const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`
         const Sub = subreddit
         const Flair = flairId
-        const mt_time = convertETtoMT(time)
-        const Title = title(matchup, mt_time)
+        const Title = title(matchup, gameTime)
         const Body = body(home, away)
         await post(Sub, Title, Body, Flair)
     } catch (err) {
