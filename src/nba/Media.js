@@ -19,7 +19,7 @@ export async function Media(info) {
         away: {
             radio: {
                 name: awayRadio.disp,
-                url: awayRadio.url || `${_default.ddg}${awayRadio.disp}`
+                url: awayRadio.url || `${_default.ddg}"${awayRadio.disp}"`
             },
             tv: {
                 name: awayTV.disp,
@@ -29,7 +29,7 @@ export async function Media(info) {
         home: {
             radio: {
                 name: homeRadio.disp,
-                url: homeRadio.url || `${_default.ddg}${homeRadio.disp}`
+                url: homeRadio.url || `${_default.ddg}"${homeRadio.disp}"`
             },
             tv: {
                 name: homeTV.disp,
