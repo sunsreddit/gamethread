@@ -1,25 +1,23 @@
-// Info here: https://github.com/mtthai/nba-api-client/blob/master/data/endpoints.json
+import { default as parameters } from "../../meta/parameters.json" assert { type: "json" }
+const full_schedule = "https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2022/league/00_full_schedule_week.json"
 
-export async function GameData(team) {
-    if (typeof team !== "string" || team.length !== 3) throw new Error("Parameter must be a string with 3 characters signifying a team's city (e.g. 'PHX')")
-    // nba api data
-    const full_schedule = "https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2022/league/00_full_schedule_week.json"
+/**
+ * Retrieves NBA Game Data of the next scheduled game for the specified team name (e.g. "Suns")
+ * More info here: https://github.com/mtthai/nba-api-client/blob/master/data/endpoints.json
+ * @param {String} teamName - Name of an NBA team
+ * @returns {Object}
+ */
+export async function GameData(teamName) {
+    if ((typeof teamName !== 'string') || (teamName === undefined || null)) throw new Error(`'${teamName}' is not of type String.`)
+    const date = {
+        now: new Date(),
+        month: new Date().toLocaleString("en-US", { month: "long" }),
+    }
     const response = (await fetch(full_schedule)).json()
-    const game_data = (await response)
-
-    // today's short-date e.g. "20221120"
-    const today_date = (new Date((new Date).getTime() - ((new Date).getTimezoneOffset() * 83995)).toISOString().split('T')[0]).replaceAll('-', '')
-    // current month name
-    const month = new Date().toLocaleString("en-US", { month: "long" })
-
-    // latest 7-day schedule
-    const schedules = game_data.lws
-    const game_date = schedules.find((schedule) => today_date >= schedule.from && schedule.to >= today_date)
-
-    // games this week
-    const games = ((game_data.lscd.filter((m) => m.mscd.mon === month))[0]).mscd.g
-
-    // team game
-    const game = (games.filter(code => code.gcode.includes(today_date) && code.gcode.includes(team)))[0]
-    return game
+    const gameData = (await response)
+    const team_games = (((gameData.lscd).filter((months) =>
+        months.mscd.mon === date.month)[0]).mscd.g).filter((game) =>
+            (game.v.tn).toLowerCase() === teamName.toLowerCase() ||
+            game.h.tn.toLowerCase() === teamName.toLowerCase())
+    return team_games.find((game) => date.now < new Date(game.etm))
 }
