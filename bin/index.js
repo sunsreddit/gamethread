@@ -16,12 +16,12 @@ import dotenv from 'dotenv'
         }
         const gameTime = (gameData.tn === teamName) ? new Date(times.htm) : new Date(times.vtm)
         // const isTimeToPost = IsPostTime(times.etm)
-        const md = await Media(gameData.bd)
+        const mediaData = await Media(gameData.bd)
         const away = {
             name: gameData.v.tn,
             record: gameData.v.re,
             city: gameData.v.tc,
-            media: md.away
+            media: mediaData.away
         }
         const home = {
             name: gameData.h.tn,
@@ -30,7 +30,7 @@ import dotenv from 'dotenv'
             arena_name: gameData.an,
             arena_city: gameData.ac,
             arena_state: gameData.as,
-            media: md.home
+            media: mediaData.home
         }
         const sub = subreddit
         const flair = flairId
