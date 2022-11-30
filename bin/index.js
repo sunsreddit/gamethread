@@ -1,6 +1,6 @@
 import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
 import { GameData } from "../src/nba/GameData.js"
-import { Media } from "../src/nba/Media.js"
+import { MediaData } from "../src/nba/MediaData.js"
 import { Body, Post, Title } from "../src/reddit/submission.js"
 import dotenv from 'dotenv'
 
