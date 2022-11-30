@@ -1,6 +1,6 @@
 // Info here: https://github.com/mtthai/nba-api-client/blob/master/data/endpoints.json
 
-export async function game(team) {
+export async function GameData(team) {
     if (typeof team !== "string" || team.length !== 3) throw new Error("Parameter must be a string with 3 characters signifying a team's city (e.g. 'PHX')")
     // nba api data
     const full_schedule = "https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2022/league/00_full_schedule_week.json"

@@ -15,7 +15,10 @@
     "url": "git+https://github.com/redditsuns/gamethread.git"
   },
   "keywords": [
-    "suns"
+    "suns",
+    "reddit",
+    "gamethread",
+    "bot"
   ],
   "author": "bruxc <bruxc@sunsreddit.net>",
   "license": "MIT",

@@ -1,45 +1,49 @@
-import { game } from "../src/nba/game.js"
-import { media } from "../src/nba/media.js"
-import { title } from "../src/reddit/title.js"
-import { body } from "../src/reddit/body.js"
-import { post } from "../src/reddit/post.js"
-import { convertETtoMT } from "../src/helpers/convertETtoMT.js"
-import dotenv from 'dotenv'
 import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
+import { GameData } from "../src/nba/GameData.js"
+import { Media } from "../src/nba/Media.js"
+import { Body, Post, Title } from "../src/reddit/submission.js"
+import { Date2Cron, IsPostTime } from "../src/helpers/time.js"
 import { CronJob } from "cron";
-import { isPostTime } from "../src/helpers/isPostTime.js"
+import dotenv from 'dotenv'
 
-// new CronJob("* 0 * * * *", () => {}, null, true, 'America/New_York')
 (async () => {
     dotenv.config()
-    const { subreddit, team, flairId } = parameters
+    const { subreddit, team, teamCity, flairId } = parameters
     try {
-        const gd = await game(team)
-        const md = await media(gd.bd)
-        const gameTime = await convertETtoMT(gd.stt)
-        const isTimeToPost = await isPostTime(gameTime, process.env.TZ)
+        const gameData = await GameData(team)
+        const times = {
+            htm: gameData.htm,
+            vtm: gameData.vtm,
+            etm: gameData.etm
+        }
+        const gameTime = (gameData.ac === teamCity) ? new Date(times.htm) : newData(times.vtm)
+        const isTimeToPost = IsPostTime(times.etm)
+        const md = await Media(gameData.bd)
         const away = {
-            name: gd.v.tn,
-            record: gd.v.re,
-            city: gd.v.tc,
+            name: gameData.v.tn,
+            record: gameData.v.re,
+            city: gameData.v.tc,
             media: md.away
         }
         const home = {
-            name: gd.h.tn,
-            record: gd.h.re,
-            city: gd.h.tc,
-            arena_name: gd.ac,
-            arena_city: gd.an,
-            arena_state: gd.as,
+            name: gameData.h.tn,
+            record: gameData.h.re,
+            city: gameData.h.tc,
+            arena_name: gameData.ac,
+            arena_city: gameData.an,
+            arena_state: gameData.as,
             media: md.home
         }
-        const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`
-        const Sub = subreddit
-        const Flair = flairId
-        const Title = title(matchup, gameTime)
-        const Body = body(home, away)
-        await post(Sub, Title, Body, Flair)
-    } catch (err) {
+        const cron = Date2Cron(new Date(gameTime))
+            new CronJob(cron, async () => {
+            const Sub = subreddit
+            const Flair = flairId
+            const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`
+            const Title = Title(matchup, gameData.stt)
+            const Body = Body(home, away)
+            await Post(Sub, Title, Body, Flair)
+        }, null, true, 'America/Phoenix')
+        } catch (err) {
         console.error(err.message)
     }
 })()

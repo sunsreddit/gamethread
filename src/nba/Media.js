@@ -3,7 +3,7 @@ const _default = {
     nba: 'https://www.nba.com/watch/league-pass-stream'
 }
 
-export async function media(info) {
+export async function Media(info) {
     if (typeof info !== "object") throw new Error("Parameter must be an object containing gameday media information.")
 
     async function _getMedia(scope, type) {

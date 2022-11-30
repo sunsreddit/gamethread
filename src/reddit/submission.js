@@ -1,3 +1,27 @@
+import snoowrap from "snoowrap"
+
+export async function Post(sub, title, text, flairId) {
+    return new snoowrap({
+        userAgent: process.env.USER_AGENT,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLIENT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN
+    }).getSubreddit(sub).submitSelfpost({
+        text,
+        title
+    })
+        .selectFlair({
+            flair_template_id: flair ? flair : ""
+        })
+        .sticky()
+        .distinguish()
+        .setSuggestedSort('new')
+}
+
+export const Title = (matchup, time) => {
+    return `[GAME THREAD]: ${matchup} (${time})`
+}
+
 const hScore = {
     1: 0,
     2: 0,
@@ -38,7 +62,7 @@ function _media(home, away) {
 |**Radio (Pirate)**|[Yarrr](https://gprivate.com/620jy)|`
 }
 
-export function body(home, away) {
+export function Body(home, away) {
     // const _score = _boxScore(home, away)
     const ad = _arena(home.arena_city, home.arena_name)
     const md = _media(home.media, away.media)
