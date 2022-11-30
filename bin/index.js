@@ -8,9 +8,9 @@ import dotenv from 'dotenv'
 
 (async () => {
     dotenv.config()
-    const { subreddit, team, teamCity, flairId } = parameters
+    const { subreddit, teamName, flairId } = parameters
     try {
-        const gameData = await GameData(team)
+        const gameData = await GameData(teamName)
         const times = {
             htm: gameData.htm,
             vtm: gameData.vtm,

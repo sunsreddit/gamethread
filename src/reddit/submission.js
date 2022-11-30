@@ -50,8 +50,8 @@ const _boxScore = (home, away) => {
 `
 }
 
-function _arena(arena_city, arena_name) {
-    return `|**Arena**|${arena_city} ${arena_name}|`
+function _arena(home) {
+    return `|**Arena**|${home.arena_city}, ${home.arena_state} - ${home.arena_name}|`
 }
 
 function _media(home, away) {
@@ -64,7 +64,7 @@ function _media(home, away) {
 
 export function Body(home, away) {
     // const _score = _boxScore(home, away)
-    const ad = _arena(home.arena_city, home.arena_name)
+    const ad = _arena(home)
     const md = _media(home.media, away.media)
     return `|   |   |
 |:--|:--|
