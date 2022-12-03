@@ -23,7 +23,7 @@ import dotenv from 'dotenv'
                 */
                 // Cron(cron, { timezone: timeZone }, async () => { 
                     const post = await RedditPost(game)
-                    return post 
+                    console.log(post)
                 // })
             } else console.log(`skipping ${game.gcode}`)
         }
