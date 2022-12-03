@@ -36,6 +36,7 @@
         <li><a href="#prerequisites">Prerequisites</a></li>
       </ul>
     </li>
+    <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
         <li><a href="#license">License</a></li>
@@ -64,6 +65,9 @@ The following prerequisites and requirements are necessary for the success of th
 * Docker / Docker Compose
 * Node.js 19+
 
+<!-- USAGE -->
+## Usage
+*TO DO*
 <!-- CONTRIBUTING -->
 ## Contributing
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
@@ -80,6 +84,7 @@ Don't forget to give the project a star! Thanks again!
 
 | TO DO      | Description                                                  | OpenProject ID           | Status        |
 | --         | --                                                           | --                       | --            |
+| Usage      | Add "Usage" instructions in the README.md                    | [TBD]                    | 📑 Open       | 
 | Unit Tests | Jest Unit Testing for all modules in the directory: `./src/` | [TBD]                    | 📑 Open       | 
 | Automation | A Docker service that automates the projects actions         | [GAMETHREAD-112][rm-112] | ✏️ In Progress |
 
@@ -105,7 +110,7 @@ Distributed under the MIT License. See [LICENSE][license-url] for more informati
   [docker-url]:    https://docs.docker.com/compose/
   [linux-shield]:  https://img.shields.io/badge/Linux-%5E22.04.1-blue?style=appveyor&logo=linux
   [linux-url]:     https://docs.ubuntu.com/
-  [node-shield]:   https://img.shields.io/badge/Node.js-%5E19.1.0-green?style=appveyor&logo=nodedotjs
+  [node-shield]:   https://img.shields.io/badge/Node.js-%5E19.2.0-green?style=appveyor&logo=nodedotjs
   [node-url]:      https://nodejs.org/en/docs/
   [reddit-shield]: ./docs/reddit.svg
   [rm-112]:        https://agile.sunsreddit.net/projects/suns-gamethread-project/work_packages/details/112/
