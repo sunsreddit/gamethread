@@ -1,9 +1,11 @@
+import { encode } from 'url-encode-decode'
+
 /**
  * Returns game day media information
  * @param {Object} gameInfo - Game day information object
  * @returns {Object}
  */
-export async function MediaData(gameInfo) {
+export default async function MediaData(gameInfo) {
     if (typeof gameInfo !== "object") throw new Error("Parameter must be an object containing gameday media information.")
     async function _getMedia(scope, type) {
         return (gameInfo.b.filter((obj) => obj.scope === scope && obj.type === type))[0]
@@ -13,14 +15,14 @@ export async function MediaData(gameInfo) {
     const awayTV = await _getMedia('away', 'tv')
     const homeTV = await _getMedia('home', 'tv')
     const _defaultStreams = {
-        ddg: 'https://duckduckgo.com/?q=!ducky+',
+        ddg: 'https://duckduckgo.com/?q=%21ducky+%5C',
         nba: 'https://www.nba.com/watch/league-pass-stream'
     }
     return {
         away: {
             radio: {
                 name: awayRadio.disp,
-                url: awayRadio.url || `${_defaultStreams.ddg}"${awayRadio.disp}"`
+                url: awayRadio.url || `${_defaultStreams.ddg}${encode(awayRadio.disp)}`
             },
             tv: {
                 name: awayTV.disp,
@@ -30,7 +32,7 @@ export async function MediaData(gameInfo) {
         home: {
             radio: {
                 name: homeRadio.disp,
-                url: homeRadio.url || `${_defaultStreams.ddg}"${homeRadio.disp}"`
+                url: homeRadio.url || `${_defaultStreams.ddg}${encode(homeRadio.disp)}`
             },
             tv: {
                 name: homeTV.disp,
