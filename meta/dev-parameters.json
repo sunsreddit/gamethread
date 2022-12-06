@@ -2,7 +2,7 @@
     "api": {
         "nba" : "https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2022/league/00_full_schedule_week.json"
     },
-    "flairId": "7cd45bf8-6dad-11ed-9191-9a69d9980601",
+    "flairId": "f0605d84-6e01-11ed-b839-5282a2ede673",
     "subreddit": "bruxc",
     "teamName": "Suns",
     "timeZone": "America/New_York"
