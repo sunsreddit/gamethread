@@ -1,41 +1,29 @@
-import { game } from "../src/nba/game.js"
-import { media } from "../src/nba/media.js"
-import { title } from "../src/reddit/title.js"
-import { body } from "../src/reddit/body.js"
-import { post } from "../src/reddit/post.js"
-import { convertETtoMT } from "../src/helpers/convertETtoMT.cjs"
-import dotenv from 'dotenv'
 import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
+import { TeamGames } from "../src/nba/GameData.js"
+import { RedditPost } from "../src/reddit/RedditPost.js"
+import { IsPostTime, PostCron, PostTime } from "../src/reddit/PostTime.js"
+import { Cron } from "croner";
+import dotenv from 'dotenv'
 
 (async () => {
     dotenv.config()
-    const { subreddit, team, flairId } = parameters
+    const { teamName, timeZone } = parameters
     try {
-        const gd = await game(team)
-        const md = await media(gd.bd)
-        const time = gd.stt
-        const away = {
-            name: gd.v.tn,
-            record: gd.v.re,
-            city: gd.v.tc,
-            media: md.away
+        const teamGames = await TeamGames(teamName)
+        for (const game of teamGames) {
+            const gameTime = new Date(game.etm)
+            const isPostTime = IsPostTime(gameTime)
+            if (isPostTime) {
+                console.log(`Games in queue... ${game.gcode}...`)
+                const postTime = PostTime(gameTime)
+                const cron = PostCron(postTime)
+                // TO-DO: Research Cron's `fnParameters` & use to kick-off clean-up job & Post Game Thread submission
+                return Cron(cron, { timezone: timeZone }, async () => {
+                    const post = await RedditPost(game)
+                    console.log(post)
+                })
+            } else console.log(`skipping ${game.gcode}`)
         }
-        const home = {
-            name: gd.h.tn,
-            record: gd.h.re,
-            city: gd.h.tc,
-            arena_name: gd.ac,
-            arena_city: gd.an,
-            arena_state: gd.as,
-            media: md.home
-        }
-        const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`
-        const Sub = subreddit
-        const Flair = flairId
-        const mt_time = convertETtoMT(time)
-        const Title = title(matchup, mt_time)
-        const Body = body(home, away)
-        await post(Sub, Title, Body, Flair)
     } catch (err) {
         console.error(err.message)
     }
