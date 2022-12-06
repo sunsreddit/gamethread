@@ -19,6 +19,7 @@ export function IsDaylightSavings(date = new Date()) {
  * @param {number} amount Number of minutes to subtract 
  */
  export function SubtractMinutes(date, amount) {
+  if (!(date instanceof Date)) throw new console.error(`Parameter is not of type 'Date'`);
     const newDate = new Date(date);
     return new Date(newDate.setMinutes(newDate.getMinutes() - amount))
   }
