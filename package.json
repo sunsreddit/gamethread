@@ -25,7 +25,6 @@
   },
   "homepage": "https://github.com/redditsuns/gamethread#readme",
   "dependencies": {
-    "base64-url": "^2.3.3",
     "croner": "^5.3.5",
     "node-fetch": "^3.3.0",
     "snoowrap": "^1.23.0",
