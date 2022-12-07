@@ -6,6 +6,7 @@ import { Cron } from "croner";
 import dotenv from 'dotenv'
 
 (async () => {
+    ["SIGINT", "SIGTERM"].forEach((signal) => process.on(signal, () => process.exit(0)));
     dotenv.config()
     const { teamName, timeZone } = parameters
     try {
@@ -14,7 +15,7 @@ import dotenv from 'dotenv'
             const gameTime = new Date(game.etm)
             const isPostTime = IsPostTime(gameTime)
             if (isPostTime) {
-                console.log(`Games in queue... ${game.gcode}...`)
+                console.log(`Queueing game: ${game.gcode}...`)
                 const postTime = PostTime(gameTime)
                 const cron = PostCron(postTime)
                 // TO-DO: Research Cron's `fnParameters` & use to kick-off clean-up job & Post Game Thread submission
@@ -22,7 +23,7 @@ import dotenv from 'dotenv'
                     const post = await RedditPost(game)
                     console.log(post)
                 })
-            } else console.log(`skipping ${game.gcode}`)
+            } else console.log(`Game expired. Skipping: ${game.gcode}`)
         }
     } catch (err) {
         console.error(err.message)
