@@ -7,7 +7,7 @@ import { default as parameters } from "../../meta/parameters.json" assert { type
  * @returns {Object}
  */
 export async function GameData(teamName) {
-    if ((typeof teamName !== 'string') || (teamName === undefined || null)) throw new Error(`'${teamName}' is not of type String.`)
+    if (typeof teamName !== "string") throw new Error(`Parameter GameData(teamName) is not of type 'String'`) 
     const teamGames = await TeamGames(teamName) 
     return teamGames.find((game) => Date.now() < new Date(game.etm))
 }
@@ -18,10 +18,10 @@ export async function GameData(teamName) {
  * @returns {Object}
  */
 export async function TeamGames(teamName) {
-    if ((typeof teamName !== 'string') || (teamName === undefined || null)) throw new Error(`'${teamName}' is not of type String.`)
+    if (typeof teamName !== "string") throw new Error(`Parameter TeamGames(teamName) is not of type 'String'`) 
     const month = new Date().toLocaleString("en-US", { month: "long" })
-    const response = (await fetch(parameters.api.nba)).json()
-    const gameData = (await response)
+    const response = await fetch(parameters.api.nba)
+    const gameData = await response.json()
     return (((gameData.lscd).filter((months) =>
         months.mscd.mon === month)[0]).mscd.g).filter((game) =>
             (game.v.tn).toLowerCase() === teamName.toLowerCase() ||

@@ -1,38 +1,38 @@
 {
-  "gid": "0022200259",
-  "gcode": "20221122/LALPHX",
+  "gid": "0022200552",
+  "gcode": "20230102/CHICLE",
   "seri": "",
   "is": 1,
-  "gdte": "2022-11-22",
-  "htm": "2022-11-22T20:00:00",
-  "vtm": "2022-11-22T19:00:00",
-  "etm": "2022-11-22T22:00:00",
-  "an": "Footprint Center",
-  "ac": "Phoenix",
-  "as": "AZ",
+  "gdte": "2023-01-02",
+  "htm": "2023-01-02T19:00:00",
+  "vtm": "2023-01-02T18:00:00",
+  "etm": "2023-01-02T19:00:00",
+  "an": "Rocket Mortgage FieldHouse",
+  "ac": "Cleveland",
+  "as": "OH",
   "st": "1",
-  "stt": "10:00 pm ET",
+  "stt": "7:00 pm ET",
   "bd": {
     "b": [
       {
         "seq": 1,
-        "disp": "TNT",
-        "scope": "natl",
-        "type": "tv",
-        "lan": "English",
-        "url": "https://www.tntdrama.com/nba-on-tnt"
-      },
-      {
-        "seq": 2,
-        "disp": "SN",
-        "scope": "can",
+        "disp": "Bally Sports Ohio",
+        "scope": "home",
         "type": "tv",
         "lan": "English",
         "url": null
       },
       {
+        "seq": 2,
+        "disp": "NBC Sports Chicago",
+        "scope": "away",
+        "type": "tv",
+        "lan": "English",
+        "url": "http://stream.nbcsports.com/rsn/nba-bulls-live-stream"
+      },
+      {
         "seq": 3,
-        "disp": "KMVP 98.7 / S: KSUN",
+        "disp": "WTAM/WMMS/WNZN",
         "scope": "home",
         "type": "radio",
         "lan": "English",
@@ -40,7 +40,7 @@
       },
       {
         "seq": 4,
-        "disp": "ESPN LA 710/KWKW (S)",
+        "disp": "670 The Score",
         "scope": "away",
         "type": "radio",
         "lan": "English",
@@ -49,24 +49,24 @@
     ]
   },
   "v": {
-    "tid": 1610612747,
-    "re": "5-10",
-    "ta": "LAL",
-    "tn": "Lakers",
-    "tc": "Los Angeles",
+    "tid": 1610612741,
+    "re": "6-10",
+    "ta": "CHI",
+    "tn": "Bulls",
+    "tc": "Chicago",
     "s": ""
   },
   "h": {
-    "tid": 1610612756,
-    "re": "10-6",
-    "ta": "PHX",
-    "tn": "Suns",
-    "tc": "Phoenix",
+    "tid": 1610612739,
+    "re": "9-6",
+    "ta": "CLE",
+    "tn": "Cavaliers",
+    "tc": "Cleveland",
     "s": ""
   },
-  "gweek": 6,
-  "gdtutc": "2022-11-23",
-  "utctm": "03:00",
+  "gweek": 12,
+  "gdtutc": "2023-01-03",
+  "utctm": "00:00",
   "ppdst": "I",
-  "seq": 4
+  "seq": 3
 }
