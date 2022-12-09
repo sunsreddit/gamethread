@@ -7,9 +7,9 @@ import { Date2Cron } from "../helpers/time.js"
  * @returns {boolean}
  */
 export function IsPostTime(gameTime) {
-    if (!(gameTime instanceof Date)) throw new console.error(`Parameter is not of type 'Date'`);
+    if (!(gameTime instanceof Date)) throw new TypeError(`Parameter is not of type 'Date'`)
     const postTime = PostTime(gameTime)
-    return new Date().getDate() <= postTime.getDate()
+    return new Date().getTime() <= postTime.getTime()
 }
 
 /**
@@ -29,7 +29,7 @@ export function IsPostTime(gameTime) {
  * @returns {Date}
  */
 export function PostTime(gameTime) {
-    if (!(gameTime instanceof Date)) throw new console.error(`Parameter is not of type 'Date'`);
+    if (!(gameTime instanceof Date)) throw new TypeError(`Parameter is not of type 'Date'`);
     // Offset to 2 or 3 hrs., Daylight Savings permitted
     const postOffset = IsDaylightSavings(gameTime) ? 180 : 120
     return SubtractMinutes(gameTime, postOffset)
