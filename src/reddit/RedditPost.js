@@ -1,10 +1,10 @@
 import { default as parameters } from "../../meta/dev-parameters.json" assert { type: "json" }
-import MediaData from "../nba/GameDayInfo.js"
+import { GameDayInfo } from "../nba/GameDayInfo.js"
 import { Body, SubmitPost, Title } from "./SubmitPost.js"
 
 export async function RedditPost(data) {
     const { flairId, subreddit } = parameters
-    const mediaData = await MediaData(data.bd)
+    const mediaData = await GameDayInfo(data.bd)
     const away = {
         name: data.v.tn,
         record: data.v.re,

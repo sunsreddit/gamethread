@@ -5,7 +5,7 @@ import { encode } from 'url-encode-decode'
  * @param {Object} gameInfo - Game day information object
  * @returns {Object}
  */
-export default async function MediaData(gameInfo) {
+export async function GameDayInfo(gameInfo) {
     if (typeof gameInfo !== "object") throw new Error("Parameter must be an object containing gameday media information.")
     async function _getMedia(scope, type) {
         return (gameInfo.b.filter((obj) => obj.scope === scope && obj.type === type))[0]
