@@ -1,9 +1,10 @@
 /**
  * Returns a cron schedule using a Date object
- * @param {Date} date - A Date Object
+ * @param {Date} [date] - A Date Object
  * @returns {string} - Cron schedule
  */
 export function Date2Cron(date = new Date()) {
+  if (!(date instanceof Date)) throw new TypeError(`Parameter is not of type 'Date'`)
   const minute = date.getMinutes(),
     hour = date.getHours(),
     dayOfMonth = date.getDate(),
@@ -14,7 +15,7 @@ export function Date2Cron(date = new Date()) {
 
 /**
  * Verifies if it is currently Daylight Savings Time
- * @param {*} date - A Date Object
+ * @param {*} [date] - A Date Object
  * @returns {Boolean}
  */
 export function IsDaylightSavings(date = new Date()) {
@@ -33,7 +34,7 @@ export function IsDaylightSavings(date = new Date()) {
  * @param {number} amount Number of minutes to subtract 
  */
 export function SubtractMinutes(date, amount) {
-  if (!(date instanceof Date)) throw new Error(`Parameter is not of type 'Date'`);
+  if (!(date instanceof Date)) throw new TypeError(`Parameter is not of type 'Date'`)
   const newDate = new Date(date);
   return new Date(newDate.setMinutes(newDate.getMinutes() - amount))
 }

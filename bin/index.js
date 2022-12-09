@@ -1,30 +1,15 @@
-import { default as parameters } from "../meta/parameters.json" assert { type: "json" }
-import { TeamGames } from "../src/nba/GameData.js"
+import { default as parameters } from "../meta/dev-parameters.json" assert { type: "json" }
+import { LatestGame } from "../src/nba/LatestGame.js"
 import { RedditPost } from "../src/reddit/RedditPost.js"
-import { IsPostTime, PostCron, PostTime } from "../src/reddit/PostTime.js"
-import { Cron } from "croner";
 import dotenv from 'dotenv'
 
 (async () => {
-    ["SIGINT", "SIGTERM"].forEach((signal) => process.on(signal, () => process.exit(0)));
     dotenv.config()
-    const { teamName, timeZone } = parameters
+    const { teamName } = parameters
     try {
-        const teamGames = await TeamGames(teamName)
-        for (const game of teamGames) {
-            const gameTime = new Date(game.etm)
-            const isPostTime = IsPostTime(gameTime)
-            if (isPostTime) {
-                console.log(`Queueing game: ${game.gcode}...`)
-                const postTime = PostTime(gameTime)
-                const cron = PostCron(postTime)
-                // TO-DO: Research Cron's `fnParameters` & use to kick-off clean-up job & Post Game Thread submission
-                return Cron(cron, { timezone: timeZone }, async () => {
-                    const post = await RedditPost(game)
-                    console.log(post)
-                })
-            } else console.log(`Game expired. Skipping: ${game.gcode}`)
-        }
+        const latestGame = await LatestGame(teamName)
+        await RedditPost(latestGame)
+        return latestGame
     } catch (err) {
         console.error(err.message)
     }

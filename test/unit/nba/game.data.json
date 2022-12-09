@@ -1,46 +1,38 @@
 {
-  "gid": "0022200552",
-  "gcode": "20230102/CHICLE",
+  "gid": "0012200016",
+  "gcode": "20221004/NOPCHI",
   "seri": "",
   "is": 1,
-  "gdte": "2023-01-02",
-  "htm": "2023-01-02T19:00:00",
-  "vtm": "2023-01-02T18:00:00",
-  "etm": "2023-01-02T19:00:00",
-  "an": "Rocket Mortgage FieldHouse",
-  "ac": "Cleveland",
-  "as": "OH",
-  "st": "1",
-  "stt": "7:00 pm ET",
+  "gdte": "2022-10-04",
+  "htm": "2022-10-04T20:30:00",
+  "vtm": "2022-10-04T20:30:00",
+  "etm": "2022-10-04T21:30:00",
+  "an": "United Center",
+  "ac": "Chicago",
+  "as": "IL",
+  "st": "3",
+  "stt": "Final",
   "bd": {
     "b": [
       {
         "seq": 1,
-        "disp": "Bally Sports Ohio",
-        "scope": "home",
+        "disp": "TNT",
+        "scope": "natl",
         "type": "tv",
         "lan": "English",
         "url": null
       },
       {
         "seq": 2,
-        "disp": "NBC Sports Chicago",
-        "scope": "away",
+        "disp": "NBCSCH+",
+        "scope": "home",
         "type": "tv",
         "lan": "English",
-        "url": "http://stream.nbcsports.com/rsn/nba-bulls-live-stream"
+        "url": "https://smart.link/5bb25a6d59596?site_id=Dig_NBA_League&creative_id=nbcsrsnhq1040&cp_4=stream.nbcsports.com&cp_1=rsn&cp_2=nba-bulls-live-stream&cp_3=nbcsrsnhq1040"
       },
       {
         "seq": 3,
-        "disp": "WTAM/WMMS/WNZN",
-        "scope": "home",
-        "type": "radio",
-        "lan": "English",
-        "url": null
-      },
-      {
-        "seq": 4,
-        "disp": "670 The Score",
+        "disp": "WRNO 99.5FM",
         "scope": "away",
         "type": "radio",
         "lan": "English",
@@ -49,24 +41,48 @@
     ]
   },
   "v": {
+    "tid": 1610612740,
+    "re": "1-0",
+    "ta": "NOP",
+    "tn": "Pelicans",
+    "tc": "New Orleans",
+    "s": "129"
+  },
+  "h": {
     "tid": 1610612741,
-    "re": "6-10",
+    "re": "0-1",
     "ta": "CHI",
     "tn": "Bulls",
     "tc": "Chicago",
-    "s": ""
+    "s": "125"
   },
-  "h": {
-    "tid": 1610612739,
-    "re": "9-6",
-    "ta": "CLE",
-    "tn": "Cavaliers",
-    "tc": "Cleveland",
-    "s": ""
-  },
-  "gweek": 12,
-  "gdtutc": "2023-01-03",
-  "utctm": "00:00",
+  "gweek": null,
+  "gdtutc": "2022-10-05",
+  "utctm": "01:30",
   "ppdst": "I",
+  "ptsls": {
+    "pl": [
+      {
+        "pid": "1628984",
+        "fn": "Devonte'",
+        "ln": "Graham",
+        "val": "21",
+        "tid": 1610612740,
+        "ta": "NOP",
+        "tn": "Pelicans",
+        "tc": "New Orleans"
+      },
+      {
+        "pid": "201942",
+        "fn": "DeMar",
+        "ln": "DeRozan",
+        "val": "21",
+        "tid": 1610612741,
+        "ta": "CHI",
+        "tn": "Bulls",
+        "tc": "Chicago"
+      }
+    ]
+  },
   "seq": 3
 }

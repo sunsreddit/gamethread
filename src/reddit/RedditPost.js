@@ -1,5 +1,5 @@
-import { default as parameters } from "../../meta/parameters.json" assert { type: "json" }
-import MediaData from "../nba/MediaData.js"
+import { default as parameters } from "../../meta/dev-parameters.json" assert { type: "json" }
+import MediaData from "../nba/GameDayInfo.js"
 import { Body, SubmitPost, Title } from "./SubmitPost.js"
 
 export async function RedditPost(data) {

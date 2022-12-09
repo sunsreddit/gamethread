@@ -1,0 +1,17 @@
+import { LatestGame } from "../../../src/nba/LatestGame.js"
+import { default as api } from "./api.data.json" assert { type: "json" }
+import { default as game } from "./game.data.json" assert { type: "json" }
+
+// LatestGame()
+describe("Lastest Game Testing", () => {
+    test("Returns latest scheduled game", async () => {
+        global.fetch = jest.fn(() => Promise.resolve({ json: () => Promise.resolve(api) }))
+        const teamName = "Bulls"
+        const gameDate = new Date("2022-10-04")
+        const result = await LatestGame(teamName, gameDate)
+        expect(result).toEqual(game)
+    })
+    test("Throws a type error", async () => {
+        await expect(LatestGame()).rejects.toThrow(TypeError)
+    })
+})
