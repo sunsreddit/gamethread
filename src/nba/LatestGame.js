@@ -12,7 +12,7 @@ export async function LatestGame(teamName, gameDate = new Date()) {
     const data = await fetch(parameters.api.nba)
     const games = (await data.json()).lscd.find((mon) => mon.mscd.mon === month)
     const latestGame = games.mscd.g.find((game) =>
-    ((gameDate.getDate() <= (new Date(game.gdte)).getDate()) &&
+    ((gameDate.getDate() <= (new Date(game.etm)).getDate()) &&
         (game.v.tn.toLowerCase() === teamName.toLowerCase() ||
             game.h.tn.toLowerCase() === teamName.toLowerCase()))
     )
