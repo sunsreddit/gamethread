@@ -4,7 +4,7 @@
  * @returns {string} - Cron schedule
  */
 export function Date2Cron(date = new Date()) {
-  if (!(date instanceof Date)) throw new TypeError(`Parameter is not of type 'Date'`)
+  if (!(date instanceof Date)) throw new TypeError(`Date2Cron: Parameter is not of type 'Date'`)
   const minute = date.getMinutes(),
     hour = date.getHours(),
     dayOfMonth = date.getDate(),
@@ -34,7 +34,7 @@ export function IsDaylightSavings(date = new Date()) {
  * @param {number} amount Number of minutes to subtract 
  */
 export function SubtractMinutes(date, amount) {
-  if (!(date instanceof Date)) throw new TypeError(`Parameter is not of type 'Date'`)
+  if (!(date instanceof Date)) throw new TypeError(`SubtractMinutes: Parameter is not of type 'Date'`)
   const newDate = new Date(date);
   return new Date(newDate.setMinutes(newDate.getMinutes() - amount))
 }

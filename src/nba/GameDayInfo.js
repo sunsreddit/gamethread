@@ -6,7 +6,7 @@ import { encode } from 'url-encode-decode'
  * @returns {Object}
  */
 export async function GameDayInfo(gameInfo) {
-    if (gameInfo instanceof Object) throw new TypeError(`Parameter is not of type 'Object'`)
+    if (typeof gameInfo !== 'object') throw new TypeError(`GameDayInfo: Parameter is not of type 'Object'`)
     async function _getMedia(scope, type) {
         return (gameInfo.b.filter((obj) => obj.scope === scope && obj.type === type))[0]
     }
