@@ -1,9 +1,13 @@
-import { default as parameters } from "../../meta/dev-parameters.json" assert { type: "json" }
 import { GameDayInfo } from "../nba/GameDayInfo.js"
 import { Body, SubmitPost, Title } from "./SubmitPost.js"
 
-export async function RedditPost(data) {
-    const { flairId, subreddit } = parameters
+/**
+ * Creates and submits a Reddit post 
+ * @param {object} data - Game data object
+ * @param {string} flairId - Sub-Reddit flair ID
+ * @param {string} subreddit - Subreddit name
+ */
+export async function RedditPost(data, flairId, subReddit) {
     const mediaData = await GameDayInfo(data.bd)
     const away = {
         name: data.v.tn,
@@ -25,7 +29,7 @@ export async function RedditPost(data) {
     const body = Body(home, away)
     console.log(
         `Body is:\n${body}\n
-         Sub is: ${subreddit}\n
+         Sub is: ${subReddit}\n
          Title is :${title}\n
          FlairId is: ${flairId}
         `
