@@ -1,3 +1,5 @@
+import moment from 'moment-timezone';
+
 /**
  * Returns a cron schedule using a Date object
  * @param {Date} [date] - A Date Object
@@ -37,4 +39,8 @@ export function SubtractMinutes(date, amount) {
   if (!(date instanceof Date)) throw new TypeError(`SubtractMinutes: Parameter is not of type 'Date'`)
   const newDate = new Date(date);
   return new Date(newDate.setMinutes(newDate.getMinutes() - amount))
+}
+
+export function ConvertToTimeZone(time, timeZone = 'America/Phoenix') {
+  return moment(time).tz(timeZone).format('h:mm a z');
 }

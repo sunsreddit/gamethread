@@ -24,9 +24,9 @@ export async function RedditPost(data, flairId, subReddit) {
         arena_state: data.as,
         media: mediaData.home
     }
-    const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`
-    const title = Title(matchup, data.stt)
-    const body = Body(home, away)
+  const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`;
+  const time = ConvertToTimeZone(data.etm);
+  const title = Title(matchup, time);
     console.log(
         `Body is:\n${body}\n
          Sub is: ${subReddit}\n
@@ -34,5 +34,5 @@ export async function RedditPost(data, flairId, subReddit) {
          FlairId is: ${flairId}
         `
     )
-    return await SubmitPost(subreddit, title, body, flairId)
+  return await SubmitPost(subReddit, title, body, flairId);
 }
