@@ -25,24 +25,24 @@
   },
   "homepage": "https://github.com/redditsuns/gamethread#readme",
   "dependencies": {
-    "croner": "^5.3.5",
+    "croner": "^7.0.5",
     "moment-timezone": "^0.5.43",
-    "node-fetch": "^3.3.0",
+    "node-fetch": "^3.3.2",
     "snoowrap": "^1.23.0",
     "url-encode-decode": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.5",
-    "@babel/plugin-syntax-import-assertions": "^7.20.0",
-    "@babel/preset-env": "^7.20.2",
-    "@jest/globals": "^29.3.1",
-    "@types/jest": "^29.2.3",
-    "babel-jest": "^29.3.1",
-    "dotenv": "^16.0.3",
-    "eslint": "^8.29.0",
+    "@babel/core": "^7.23.3",
+    "@babel/plugin-syntax-import-assertions": "^7.23.3",
+    "@babel/preset-env": "^7.23.3",
+    "@jest/globals": "^29.7.0",
+    "@types/jest": "^29.5.8",
+    "babel-jest": "^29.7.0",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.54.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.1.1",
-    "jest": "^29.3.1",
-    "jsdoc": "^4.0.0"
+    "jest": "^29.7.0",
+    "jsdoc": "^4.0.2"
   }
 }

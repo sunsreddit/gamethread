@@ -1,10 +1,9 @@
 import { default as parameters } from '../meta/parameters.json' assert { type: 'json' };
 import { LatestGame } from '../src/nba/LatestGame.js';
 import { RedditPost } from '../src/reddit/RedditPost.js';
-import dotenv from 'dotenv';
+import 'dotenv/config';
 
 (async () => {
-  dotenv.config();
   const {
     api: { nba },
     flairId,
