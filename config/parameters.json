@@ -1,0 +1,10 @@
+{
+    "nba": {
+        "api" : "https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2023/league/00_full_schedule_week.json"
+    },
+    "reddit": {
+        "flairId": "7cd45bf8-6dad-11ed-9191-9a69d9980601",
+        "subreddit": "suns",
+        "teamName": "Suns"
+    }
+}
