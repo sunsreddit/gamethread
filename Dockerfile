@@ -1,5 +1,4 @@
-# Dockerfile to create image with cron services
-FROM node:latest
+FROM node:alpine
 LABEL net.sunsreddit.vendor="r/SUNS" \
     net.sunsreddit.image.authors="mods@sunsreddit.net" \
     version="0.1.0-beta" \
@@ -7,8 +6,11 @@ LABEL net.sunsreddit.vendor="r/SUNS" \
 
 WORKDIR /app
 
-COPY . .
+COPY ./bin ./bin/
+COPY ./config ./config/
+COPY ./src ./src/
+COPY package.json package-lock.json ./
 
-RUN npm ci
+RUN npm install
 
-CMD ["node", "bin/index.js"]
+CMD ["npm", "run", "start"]

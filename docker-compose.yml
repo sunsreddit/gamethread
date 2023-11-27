@@ -1,0 +1,8 @@
+version: '3'
+services:
+  suns-gamethread:
+    restart: always
+    container_name: suns-gamethread
+    build:
+      context: .
+    env_file: .env
