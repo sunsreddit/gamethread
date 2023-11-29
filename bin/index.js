@@ -7,11 +7,11 @@ import 'dotenv/config';
 
 (async () => {
   const {
-    nba: { api },
+    nba: { endpoint },
     reddit: { flairId, subreddit, teamName },
   } = parameters;
   try {
-    const latestGame = await LatestGame(teamName, api);
+    const latestGame = await LatestGame(teamName, endpoint);
     const submitTime = SubmitTime(latestGame.etm, 60);
     const cron = DateToCron(submitTime);
 
