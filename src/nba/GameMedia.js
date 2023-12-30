@@ -28,8 +28,8 @@ export async function GameMediaInfo(gameInfo) {
         url: awayRadio.url || `${_defaultStreams.ddg}${encode(awayRadio.disp)}`,
       },
       tv: {
-        name: awayTV.disp,
-        url: awayTV.url || _defaultStreams.nba,
+        name: awayTV?.disp || 'NBA Stream',
+        url: awayTV?.url || _defaultStreams.nba,
       },
     },
     home: {
@@ -38,8 +38,8 @@ export async function GameMediaInfo(gameInfo) {
         url: homeRadio.url || `${_defaultStreams.ddg}${encode(homeRadio.disp)}`,
       },
       tv: {
-        name: homeTV.disp,
-        url: homeTV.url || _defaultStreams.nba,
+        name: homeTV?.disp || 'NBA Stream',
+        url: homeTV?.url || _defaultStreams.nba,
       },
     },
     misc: {
