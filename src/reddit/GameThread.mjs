@@ -1,5 +1,6 @@
-import { GameMediaInfo } from '../nba/GameMedia.js';
-import { ConvertTimeZoneToTitleFriendly, SubmitPost } from './Submission.js';
+import { GameMediaInfo } from '../nba/GameMedia.mjs';
+import { SubmitPost } from './Submission.mjs';
+import { ConvertTimeZoneToTitleFriendly } from '../helpers/index.mjs';
 
 /**
  * Creates and submits a Reddit post
@@ -24,7 +25,7 @@ export async function GameThread(data, flairId, subReddit) {
     arena_state: data.as,
     media: mediaData.home,
   };
-  const header = `|   |   |\n|:--|:--|`;
+  const header = '|   |   |' + `\n|:--|:--|`;
   const matchup = `${away.name} (${away.record}) @ ${home.name} (${home.record})`;
   const time = ConvertTimeZoneToTitleFriendly(data.etm, process.env.TZ);
   const title = `[GAME THREAD]: ${matchup} (${time})`;

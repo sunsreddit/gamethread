@@ -1,5 +1,4 @@
-import { GameMediaInfo } from '../../../src/nba/GameMedia.js';
-import { default as data } from './game.data.json' assert { type: 'json' };
+import { GameMediaInfo } from '../../../src/nba/GameMedia.mjs';
 
 // GameDayInfo()
 describe('Game Day Data Testing', () => {

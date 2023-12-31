@@ -1,5 +1,3 @@
-import { encode } from 'url-encode-decode';
-
 /**
  * Returns game day media information
  * @param {Object} gameInfo - Game day information object
@@ -25,7 +23,7 @@ export async function GameMediaInfo(gameInfo) {
     away: {
       radio: {
         name: awayRadio.disp,
-        url: awayRadio.url || `${_defaultStreams.ddg}${encode(awayRadio.disp)}`,
+        url: awayRadio.url || `${_defaultStreams.ddg}${awayRadio.disp}`,
       },
       tv: {
         name: awayTV?.disp || 'NBA Stream',
@@ -35,7 +33,7 @@ export async function GameMediaInfo(gameInfo) {
     home: {
       radio: {
         name: homeRadio.disp,
-        url: homeRadio.url || `${_defaultStreams.ddg}${encode(homeRadio.disp)}`,
+        url: homeRadio.url || `${_defaultStreams.ddg}${homeRadio.disp}`,
       },
       tv: {
         name: homeTV?.disp || 'NBA Stream',

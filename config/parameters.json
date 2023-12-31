@@ -1,4 +1,8 @@
 {
+    "cron": {
+        "cronTime": "0 1 * * *",
+        "timeZone": "America/New_York"
+    },
     "nba": {
         "endpoint" : "https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2023/league/00_full_schedule_week.json"
     },

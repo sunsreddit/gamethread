@@ -1,4 +1,4 @@
-import { LatestGame } from '../../../src/nba/LatestGame.js';
+import { LatestGame } from '../../../src/nba/LatestGame.mjs';
 import { default as api } from './api.data.json' assert { type: 'json' };
 import { default as game } from './game.data.json' assert { type: 'json' };
 
