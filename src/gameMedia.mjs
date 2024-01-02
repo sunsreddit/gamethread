@@ -1,36 +1,38 @@
 /**
  * Returns game day media information
  * @param {Object} gameInfo - Game day information object
- * @returns {Object}
+ * @returns {Object} Game day media information
  */
-export async function GameMediaInfo(gameInfo) {
+export async function gameMediaInfo(gameInfo) {
   if (typeof gameInfo !== 'object')
     throw new TypeError(`GameDayInfo: Parameter is not of type 'Object'`);
   
-  async function _getMedia(scope, type) {
-    return gameInfo.b.filter(
-      (obj) => obj.scope === scope && obj.type === type
-    )[0];
+  // Gets scope and type based media 
+  function _getMedia(scope, type) {
+    return gameInfo.b.find((obj) => obj.scope === scope && obj.type === type);
   }
-
-  const _defaultStreams = {
-    ddg: 'https://duckduckgo.com/?q=%21ducky+%5C',
+  
+  // Default media URLs
+  const _defaultMediaUrls = {
+    ddg: 'https://duckduckgo.com/?q=%5C+',
     nba: 'https://www.nba.com/watch/league-pass-stream',
   };
   
+  // Radio media info 
   const radioInfo = (team) => {
     const radio = _getMedia(team, 'radio');
     return {
       name: radio?.disp || 'N/A',
-      url: radio?.url || encodeURIComponent(_defaultStreams.ddg + radio?.disp || '')
+      url: radio?.url || _defaultMediaUrls.ddg + encodeURIComponent((radio?.disp) || '')
     };
   };
 
+  // Television media info
   const tvInfo = (team) => {
     const tv = _getMedia(team, 'tv');
     return {
       name: tv?.disp || 'NBA League Pass',
-      url: tv?.url ||(tv?.disp ? encodeURIComponent(_defaultStreams.ddg + tv.disp) : _defaultStreams.nba),
+      url: tv?.url || (tv?.disp ? _defaultMediaUrls.ddg + encodeURIComponent(tv.disp) : '') || '' 
     };
   };
 
@@ -43,8 +45,14 @@ export async function GameMediaInfo(gameInfo) {
       radio: radioInfo('home'),
       tv: tvInfo('home'),
     },
-    misc: {
-      livestream: 'https://gprivate.com/620jy',
+    natl: {
+      radio: radioInfo('natl')
+    },
+    other: {
+      livestream: {
+        name: 'LMGTFY',
+        url: 'https://gprivate.com/620jy'
+      }
     },
   };
 }

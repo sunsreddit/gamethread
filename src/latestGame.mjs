@@ -1,13 +1,9 @@
 /**
- * Returns the latest NBA game data of the specified team name and date (optional)
- * @param {string} teamName Name of the basketball franchise (e.g. "Bulls")
- * @returns {object}
+ * Returns the latest NBA game information of the specified team's identification number
+ * @param {string} teamId ID of the basketball franchise
+ * @returns {object} Latest game day information from NBA API endpoint(s)
  */
-export async function LatestGame(teamName) {
-  if (typeof teamName !== 'string')
-    throw new TypeError(
-      `Parameter LatestGame(teamName) is not of type 'String'`
-    );
+export async function latestGameInfo(teamId) {
   const _endpointUrl = 'https://data.nba.com/data/10s/v2015/json/mobile_teams/nba/2023/league/00_full_schedule_week.json';
   const _gameDate = new Date();
   const _month = _gameDate.toLocaleString('en-US', { month: 'long' });
@@ -16,8 +12,8 @@ export async function LatestGame(teamName) {
   const _latestGame = _games.mscd.g.find(
     (_game) =>
       _gameDate.getDate() <= new Date(_game.etm).getDate() &&
-      (_game.v.tn.toLowerCase() === teamName.toLowerCase() ||
-        _game.h.tn.toLowerCase() === teamName.toLowerCase())
+      (_game.v.tid === teamId ||
+        _game.h.tid === teamId)
   );
   return _latestGame;
 }
