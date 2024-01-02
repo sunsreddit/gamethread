@@ -1,18 +1,25 @@
 {
   "name": "gamethread",
-  "version": "0.2.0-beta",
+  "version": "0.3.0",
   "description": "The automation behind the Phoenix Suns subreddit game threads.",
   "main": "bin/index.mjs",
   "type": "module",
   "directories": {
     "bin": "bin",
     "config": "config",
+    "docs": "docs",
     "src": "src"
   },
   "scripts": {
+    "build:docker": "bash scripts/build_docker.sh",
+    "build:docker:force": "bash scripts/build_docker.sh --force",
+    "build:docker:windows": "echo Please uninstall your operating system.",
+    "docs": "npx jsdoc -c jsdoc.json",
     "lint": "npx eslint .",
     "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest --coverage --config jest.config.mjs",
-    "start": "node ."
+    "start": "node .",
+    "start:cron": "node --no-warnings ./bin/cron.mjs",
+    "start:debug": "node ./src/debugger.mjs"
   },
   "repository": {
     "type": "git",
@@ -41,7 +48,7 @@
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
-    "@typescript-eslint/parser": "^6.16.0",
+    "@typescript-eslint/parser": "^6.17.0",
     "clean-jsdoc-theme": "^4.2.17",
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
