@@ -22,7 +22,8 @@ export async function GameThread(subReddit) {
   const _otherMediaInfo = _mediaData.other;
 
   // Thread header
-  const _rowHeader = '| | | | |' + `\n|-|:-:|:-:|:-`;
+  const _rowHeaders = `|   |     |     |    |\n` + 
+                      '| - | :-: | :-: | :- |';
 
   // Matchup and time information
   const _titleMatchup = `${_awayTeamInfo.name} (${_awayTeamInfo.record}) @ ${_homeTeamInfo.name} (${_homeTeamInfo.record})`;
@@ -30,7 +31,8 @@ export async function GameThread(subReddit) {
   const _titleThread = `[GAME THREAD]: ${_titleMatchup} (${_titleTime})`;
 
   // Arena information
-  const _rowArenaInfo = createMediaRow('🏟️', '🏠', `${_latestGame.an} · *${_latestGame.ac}, ${_latestGame.as}*`);
+  const _arenaEmoji = _latestGame.h.tid === teamId ? '🏠' : '✈️';
+  const _rowArenaInfo = createMediaRow('🏟️', _arenaEmoji, `${_latestGame.an} · *${_latestGame.ac}, ${_latestGame.as}*`);
 
   // TV and radio information
   const _rowHomeTv =     createMediaRow('📺', '🏠', _homeTeamInfo.media.tv);
@@ -41,7 +43,7 @@ export async function GameThread(subReddit) {
   const _rowMediaOther = createMediaRow('📱', '🏴‍☠️', _otherMediaInfo.livestream);
 
   // Assemble the body of the thread
-  const _tableGameMedia = `${_rowHeader}\n` + 
+  const _tableGameMedia = `${_rowHeaders}\n` + 
                           `${_rowArenaInfo}\n` +
                           `${_rowHomeTv}\n` +
                           `${_rowAwayTv}\n` + 
@@ -61,7 +63,7 @@ export async function GameThread(subReddit) {
     });
 
     redditPost.submitSelfpost({
-      flairId: flairId,
+      // flairId: flairId,
       subredditName: subReddit,
       text: _tableGameMedia,
       title: _titleThread,

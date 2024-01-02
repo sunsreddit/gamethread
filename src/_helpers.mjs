@@ -59,7 +59,7 @@ export function getTeamInfo(teamData, media) {
  * @returns Formatted table row
  */
 export function createMediaRow(label, emoji, media) {
-  const spacer = '| |';
-  if (typeof media === 'string') return `${spacer}${label}|${emoji}|${media}|`;
-  return `${spacer}${label}|${emoji}|[${media}](${media?.url})|`;
+  const spacer = ' ';
+  if (typeof media === 'string') return `| ${label} | ${spacer} | ${emoji} | ${media} |`;
+  return `| ${label} | ${spacer} | ${emoji} | [${media.name}](${media.url}) |`;
 }
