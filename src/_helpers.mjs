@@ -58,6 +58,8 @@ export function getTeamInfo(teamData, media) {
  * @param {object} media - Hyperlink name & url information
  * @returns Formatted table row
  */
-export function createMediaRow(label, media) {
-  return `|**${label}**|[${media.name}](${media.url})|`;
+export function createMediaRow(label, emoji, media) {
+  const spacer = '| |';
+  if (typeof media === 'string') return `${spacer}${label}|${emoji}|${media}|`;
+  return `${spacer}${label}|${emoji}|[${media}](${media?.url})|`;
 }

@@ -22,7 +22,7 @@ export async function GameThread(subReddit) {
   const _otherMediaInfo = _mediaData.other;
 
   // Thread header
-  const _rowHeader = '|   |   |' + `\n|--:|--:|`;
+  const _rowHeader = '| | | | |' + `\n|-|:-:|:-:|:-`;
 
   // Matchup and time information
   const _titleMatchup = `${_awayTeamInfo.name} (${_awayTeamInfo.record}) @ ${_homeTeamInfo.name} (${_homeTeamInfo.record})`;
@@ -30,15 +30,15 @@ export async function GameThread(subReddit) {
   const _titleThread = `[GAME THREAD]: ${_titleMatchup} (${_titleTime})`;
 
   // Arena information
-  const _rowArenaInfo = `|🏟️| **${_latestGame.an}** · *${_latestGame.ac}, ${_latestGame.as}*|`;
+  const _rowArenaInfo = createMediaRow('🏟️', '🏠', `${_latestGame.an} · *${_latestGame.ac}, ${_latestGame.as}*`);
 
   // TV and radio information
-  const _rowHomeTv =     createMediaRow('📺  |🏠', _homeTeamInfo.media.tv);
-  const _rowAwayTv =     createMediaRow('📺  | ✈️', _awayTeamInfo.media.tv);
-  const _rowRadioNatl =  createMediaRow('📻  | 🛰️', _natlMediaInfo.radio);
-  const _rowRadioHome =  createMediaRow('📻  | 🏠', _homeTeamInfo.media.radio);
-  const _rowRadioAway =  createMediaRow('📻  | ✈️', _awayTeamInfo.media.radio);
-  const _rowMediaOther = createMediaRow('📱  | 🏴‍☠️', _otherMediaInfo.livestream);
+  const _rowHomeTv =     createMediaRow('📺', '🏠', _homeTeamInfo.media.tv);
+  const _rowAwayTv =     createMediaRow('📺', '✈️', _awayTeamInfo.media.tv);
+  const _rowRadioNatl =  createMediaRow('📻' ,'🛰️', _natlMediaInfo.radio);
+  const _rowRadioHome =  createMediaRow('📻', '🏠', _homeTeamInfo.media.radio);
+  const _rowRadioAway =  createMediaRow('📻', '✈️', _awayTeamInfo.media.radio);
+  const _rowMediaOther = createMediaRow('📱', '🏴‍☠️', _otherMediaInfo.livestream);
 
   // Assemble the body of the thread
   const _tableGameMedia = `${_rowHeader}\n` + 
