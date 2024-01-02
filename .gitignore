@@ -105,5 +105,24 @@ dist
 
 # Temporary Files
 TEMP.md
+
 # Visual Studio Code
 .vscode
+
+# Archives
+*.bak
+*.oldparam
+
+# Configuration files
+config/parameters.json
+
+# Development files
+*.dev.*
+html/
+
+# JSDoc Generated files
+docs/data
+docs/fonts
+docs/scripts
+docs/styles
+docs/**.html
