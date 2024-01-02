@@ -6,13 +6,7 @@ module.exports = {
   extends: 'eslint:recommended',
   overrides: [
     {
-      env: {
-        node: true,
-      },
-      files: ['.eslintrc.{js,cjs}', '**/*.mjs'],
-      parserOptions: {
-        sourceType: 'module',
-      },
+      files: ['.eslintrc.{js,cjs}', '**/*.mjs']
     },
   ],
   parser: '@typescript-eslint/parser',
