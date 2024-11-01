@@ -14,6 +14,7 @@ WORKDIR /usr/src/app
 
 COPY ../package.json ./
 COPY ../package-lock.json ./
+COPY ../lib/ ./lib/
 COPY ../src/ ./src/
 COPY ../bin/ ./bin/
 COPY ../config/ ./config/
